@@ -245,10 +245,6 @@ workflows:
           filters:
             tags:
               only: /.*/
-      - build-osx:
-          filters:
-            tags:
-              only: /.*/
       - release:
           filters:
             tags:
