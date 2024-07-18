@@ -169,7 +169,6 @@ jobs:
             pushd artifacts/win64/; zip ../../zips/lslint_${CIRCLE_TAG}_win64.zip lslint.exe; popd
             pushd artifacts/linux32/; zip ../../zips/lslint_${CIRCLE_TAG}_linux32.zip lslint; popd
             pushd artifacts/linux64/; zip ../../zips/lslint_${CIRCLE_TAG}_linux64.zip lslint; popd
-            pushd artifacts/osx/; zip ../../zips/lslint_${CIRCLE_TAG}_osx.zip lslint; popd
       - run:
           name: "Publish Release on GitHub"
           command: |
@@ -257,7 +256,6 @@ workflows:
             - build-linux64
             - build-windows64
             - build-windows32
-            - build-osx
   check-builtins:
     when: << pipeline.parameters.run-schedule >>
     jobs: 
