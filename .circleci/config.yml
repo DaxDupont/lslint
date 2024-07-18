@@ -202,12 +202,12 @@ jobs:
       - run:
           name: fetch_and_compare
           command: |
-            curl -O https://raw.githubusercontent.com/Sei-Lisa/kwdb/master/outputs/builtins.txt
+            curl -O https://raw.githubusercontent.com/DaxDupont/kwdb/master/outputs/builtins.txt
             hasdiff=$(git status --porcelain builtins.txt)
             if [ -n "${hasdiff}" ] ; then
               make builtins_txt.cc
-              curl https://raw.githubusercontent.com/Sei-Lisa/kwdb/master/lsl2dfg/LSL2dfg.py -o /tmp/LSL2dfg.py
-              curl https://raw.githubusercontent.com/Sei-Lisa/kwdb/master/database/kwdb.xml -o /tmp/kwdb.xml
+              curl https://raw.githubusercontent.com/DaxDupont/kwdb/master/lsl2dfg/LSL2dfg.py -o /tmp/LSL2dfg.py
+              curl https://raw.githubusercontent.com/DaxDupont/kwdb/master/database/kwdb.xml -o /tmp/kwdb.xml
               python /tmp/LSL2dfg.py --version --grid=sl,os --database=/tmp/kwdb.xml > kwdb_version.txt
               git config user.name "Makopoppo(via CircleCI)"
               git config user.email "bokemako@gmail.com"
