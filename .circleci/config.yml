@@ -206,19 +206,7 @@ workflows:
     when: 
       not: << pipeline.parameters.run-schedule >>
     jobs:
-      - build-linux64:
-          filters:
-            tags:
-              only: /.*/
-      - build-linux32:
-          filters:
-            tags:
-              only: /.*/
       - build-windows64:
-          filters:
-            tags:
-              only: /.*/
-      - build-windows32:
           filters:
             tags:
               only: /.*/
