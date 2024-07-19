@@ -174,7 +174,7 @@ jobs:
           command: |
             RELEASE_BODY="$(tail -n +2 artifacts/kwdb_version.txt)"
             go install github.com/tcnksm/ghr@latest
-            ghr -t "${GITHUB_TOKEN}" -u "${CIRCLE_PROJECT_USERNAME}" -r "${CIRCLE_PROJECT_REPONAME}" -c "${CIRCLE_SHA1}" -b "${RELEASE_BODY}" -delete "${CIRCLE_TAG}" zips/
+            ghr -t "${GITHUB_TOKEN}" -u "${CIRCLE_PROJECT_USERNAME}" -r "${CIRCLE_PROJECT_REPONAME}" -b "${RELEASE_BODY}" zips/
   check-builtins:
     docker:
       - image: cimg/python:3.11
