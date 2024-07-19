@@ -169,12 +169,6 @@ jobs:
             pushd artifacts/win64/; zip ../../zips/lslint_${CIRCLE_TAG}_win64.zip lslint.exe; popd
             pushd artifacts/linux32/; zip ../../zips/lslint_${CIRCLE_TAG}_linux32.zip lslint; popd
             pushd artifacts/linux64/; zip ../../zips/lslint_${CIRCLE_TAG}_linux64.zip lslint; popd
-      - run:
-          name: "Publish Release on GitHub"
-          command: |
-            RELEASE_BODY="$(tail -n +2 artifacts/kwdb_version.txt)"
-            go install github.com/tcnksm/ghr@latest
-            ghr -t "${GITHUB_TOKEN}" -u "${CIRCLE_PROJECT_USERNAME}" -r "${CIRCLE_PROJECT_REPONAME}" -c "${CIRCLE_SHA1}" -b "${RELEASE_BODY}" -delete "${CIRCLE_TAG}" zips/
   check-builtins:
     docker:
       - image: cimg/python:3.11
@@ -210,6 +204,13 @@ workflows:
           filters:
             tags:
               only: /.*/
+      - release:
+          filters:
+            tags:
+              only: 
+                - /.*/
+          requires:
+            - build-windows64
   check-builtins:
     when: << pipeline.parameters.run-schedule >>
     jobs: 
