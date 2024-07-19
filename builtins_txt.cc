@@ -1231,6 +1231,7 @@ const char *builtins_txt[] = {
 "const integer REZ_LOCK_AXES = 11",
 "const integer REZ_OMEGA = 7",
 "const integer REZ_PARAM = 0",
+"const integer REZ_PARAM_STRING = 13",
 "const integer REZ_POS = 2",
 "const integer REZ_ROT = 3",
 "const integer REZ_SOUND = 9",

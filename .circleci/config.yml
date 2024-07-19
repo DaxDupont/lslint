@@ -222,16 +222,6 @@ workflows:
           filters:
             tags:
               only: /.*/
-      - release:
-          filters:
-            tags:
-              only: 
-                - /.*/
-          requires:
-            - build-linux32
-            - build-linux64
-            - build-windows64
-            - build-windows32
   check-builtins:
     when: << pipeline.parameters.run-schedule >>
     jobs: 
